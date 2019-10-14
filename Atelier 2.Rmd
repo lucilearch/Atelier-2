@@ -1,0 +1,138 @@
+---
+title: "Atelier 2"
+author: "Lucile Archambeau"
+date: "14/10/2019"
+output: word_document
+---
+# Présentation des vecteurs 
+
+Les vecteurs sont l’un des objets de bases de R et correspondent à une liste de valeurs. Leurs propriétés fondamentales sont :
+
+1.les vecteurs sont unidimensionnels (i.e. c’est un objet à une seule dimension, à la différence d’une matrice par exemple) ;
+2.toutes les valeurs d’un vecteur sont d’un seul et même type ;
+3.les vecteurs ont une longueur qui correspond au nombre de valeurs contenues dans le vecteur.
+```{r}
+x <- seq(from=0,to=10,by=1)
+x
+mean(x)
+sd(x)
+var(x)
+```
+
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r}
+x <- seq(from=0.01,to=10,by=0.01)
+length(x)
+plot(x,log(x),type='l',col='blue')
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+#Variables entières
+```{r}
+x <- c(1,2,3)
+x
+class(x)
+```
+#variables réelles 
+```{r}
+y <- c(sqrt(2),sqrt(3),sqrt(5))
+y
+class(y)
+```
+
+#Variables qualitative
+```{r}
+z <- c("pepito","juanito","jorgito")
+z
+class(z)
+mean(z)
+```
+
+#Petite base de données
+```{r}
+taille <- c(1.88,1.78,1.67,1.55)
+taille
+sexe <- c("f","h","f","f")
+sexe
+class(taille)
+class(sexe)
+bd <- data.frame(taille,sexe)
+bd
+```
+#Fonction rep()
+```{r}
+x <- rep("pepito",5)
+x
+y <- c(rep('f',5), rep('h',3))
+y
+```
+#fonction seq()
+
+```{r}
+x <- seq(from=-10,to=10,by=2.5)
+x
+x <- seq(from=-10,to=10,by=5)
+x
+x <- seq(from=-100,to=100,by=4)
+x
+length(x)
+```
+#L'opérateur
+
+```{r}
+x[20]
+x[20:30]
+20:30
+```
+#vecteurs remarquables
+```{r}
+pi
+exp(1)
+```
+```{r}
+LETTERS
+```
+````{r}
+letters
+```
+````{r}
+month.name
+```
+````{r}
+month.abb
+```
+#Valeurs manquantes
+
+````{r}
+taille <- c(1.88,NA,1.65,1.92,NA,1.55)
+taille
+mean(taille,na='TRUE')
+sd(taille,na='TRUE')
+summary(taille)
+is.na(taille)
+```
+#indexation par condition 
+````{r}
+sexe <- c(rep('f',25),rep('h',50))
+taille <- rnorm(75,165,4)
+taille
+bd <- data.frame(sexe,taille)
+taille.f <- taille[sexe=="f"]
+taille.f
+taille.h <- taille[sexe=="h"]
+taille.h
+mean(taille)
+mean(taille.f)
+mean(taille.h)
+conditionelle <- sexe[taille<164]
+conditionelle
+(table(conditionelle)/length(taille))*100
+boxplot(taille,taille.h,taille.f)
+```
+
+
